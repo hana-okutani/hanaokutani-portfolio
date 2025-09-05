@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ハナブースカ・デザイン Portfolio</title>
+        <!--<link rel="stylesheet" href="style.css">-->
+        <link rel="stylesheet" href="responsive-chatGPT.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+        <script defer src="https://use.fontawesome.com/releases/v7.0.0/js/all.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!--ヘッダー-->
+            <header>
+                <!-- トグル（非表示のチェックボックス） -->
+                <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="メニューを開閉">
+
+                <!-- ハンバーガーアイコン（ラベル） -->
+                <label for="nav-toggle" class="hamburger" aria-hidden="true">
+                    <span class="bar"></span>
+                </label>
+                <nav>
+                    <ul>
+                        <li><a href="index.html#works" class="nav-underline">WORKS</a></li>
+                        <li><a href="profile.html" class="nav-underline">PROFILE</a></li>
+                        <li><a href="index.html#contact" class="nav-underline">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!--ヘッダーここまで-->
+            <!--メイン-->
+            <main>
+                <!--HERO-->
+                <section class="hero">
+                    <div class="hero-inner">
+                        <img src="images/hero-title.png" alt="ハナブースカ・デザイン" class="logo">
+
+                        <h1 class="label-hero">
+                            <span class="text-webdesign">WEB DESIGN</span><br>
+                            <span class="highlight">Portfolio</span>
+                        </h1>
+                    </div>
+
+                    <img src="images/blob-skills.png" alt="" class="bg-circle yellow">
+                    <img src="images/blob-hero.png" alt="" class="bg-circle green">
+
+                    <div class="slide-wrapper">
+                        <section class="slider slider-top">
+                            <div class="slide-track">
+                                <img src="images/works-item1-top.png" alt="制作物1" class="work-thumb-top">
+                                <!--<img src="images/works-item3-top.png" alt="制作物3" class="work-thumb-top">
+                                <img src="images/works-item5-top.png" alt="制作物5" class="work-thumb-top">-->
+                                <img src="images/girl1 1.png" alt="" class="girl left">
+                            </div>
+                        </section>
+                        <section class="slider slider-bottom">
+                            <div class="slide-track reverse">
+                                <!--<img src="images/works-item6-bottom.jpg" alt="制作物6" class="work-thumb-bottom">
+                                <img src="images/works-item4-bottom.jpg" alt="制作物4" class="work-thumb-bottom">-->
+                                <img src="images/works-item2-bottom.jpg" alt="制作物2" class="work-thumb-bottom">
+                                <img src="images/girl2.gif" alt="" class="girl right">
+                            </div>
+                        </section>
+                    </div>
+                    <div class="scroll-indicator top-scroll">
+                        <span class="scroll-text">SCROLL</span>
+                        <span class="scroll-line"></span>
+                        <span class="scroll-dot"></span>
+                    </div>
+                        <div class="container">
+                            <img src="images/tree1.png" alt="" class="tree tree-1">
+                            <img src="images/tree2.png" alt="" class="tree tree-2">
+                            <img src="images/tree3.png" alt="" class="tree tree-3">
+                                <div class="text">
+                                    <p>
+                                        ハナブースカ・デザインは、<br>
+                                        福祉・公共・病院・子ども・NPO・イベントなどの分野で<br class="br-sp-none">デザインを得意とする小さなデザイン制作会社です。
+                                    </p>
+                                </div>
+                        </div>
+                </section>    
+                <!--HEROここまで-->
+
+                <!--WORKS-->
+                <section class="works" id="works">
+                    <div class="works-left">
+                        <img src="images/blob-works.png" alt="" class="bg-works">
+                        <div class="text-overlay">
+                            <p class="label-works">WORKS</p>
+                            <img src="images/text-works.png" alt="デザインしたもの" class="text-works">
+                        </div>
+                    </div>
+                    <div class="works-right">
+                        <div class="work-item">
+                            <a href="works-item1.html" class="work-link"><img src="images/works-item1.png" alt="制作物1" class="work-thumb"></a>
+                            <p class="work-about">心療内科「HANAメンタルクリニック」様(架空)公式サイト</p>
+                            <a href="works-item1.html" class="works-more top">もっとみる<i class="fa-solid fa-angle-right"></i></a>
+                        </div>
+                        <div class="work-item">
+                            <a href="works-item2.html" class="work-link"><img src="images/works-item2.jpg" alt="制作物2" class="work-thumb"></a>
+                            <p class="work-about">カフェ「Pienni Onnni」様(架空)バナーサイト</p>
+                            <a href="works-item2.html" class="works-more">もっとみる<i class="fa-solid fa-angle-right"></i></a>
+                        </div>
+                        
+                        <!--<div class="work-item">
+                            <a href="works-item3.html" class="work-link"><img src="" alt="制作物3" class="work-thumb"></a>
+                        </div>
+                        <div class="work-item">
+                            <a href="works-item4.html" class="work-link"><img src="" alt="制作物4" class="work-thumb"></a>
+                        </div>
+                        <div class="work-item">
+                            <a href="works-item5.html" class="work-link"><img src="" alt="制作物5" class="work-thumb"></a>
+                        </div>
+                        <div class="work-item">
+                            <a href="works-item6.html" class="work-link"><img src="" alt="制作物6" class="work-thumb"></a>
+                        </div>
+                            <img src="images/girl5.png" alt="" class="girl5">
+                        -->
+                    </div>
+                </section>
+                <!--WORKSここまで-->
+                
+
+                <!--PROFILE-->
+                <section class="profile" id="profile">
+                    <div class="profile-left">
+                        <img src="images/blob-profile.png" class="bg-profile" alt="">
+                        <div class="text-overlay">
+                            <p class="label-profile">PROFILE</p>
+                            <img src="images/text-profile.png" alt="私について" class="text-profile">
+                            <img src="images/img-profile.jpg" alt="プロフィール画像" class="img-profile">
+                        </div>
+                    </div>
+                    <div class="profile-right">
+                        <div class="profile-wrapper">
+                            <h2><span class="jp">奥谷 花</span>
+                                <span class="en">Hana Okutani</span> 
+                            </h2>
+                            <p class="location">横須賀市在住。</p>
+                            <div class="bio">
+                                <p>2019年に新卒で総合電機メーカーに就職後、販促物のデザインを担当する。</p>
+                                <p>2022年に障害者支援施設へ事務職として転職し、<br >チラシやパンフレットなどのデザイン業務に従事。</p>
+                                <p>「より本格的にデザインの世界に飛び込みたい」と考えるようになり、<br>2025年からWEBCOACHへ入学し、<br>Webデザインやコーディングについて学ぶ。</p>
+                            </div>
+                        </div>
+                        <a href="profile.html" class="more-indicator">   
+                            <span class="more-dot"></span>
+                            <span class="more-line"></span>    
+                            <span class="more-text">もっとみる</span></a>
+                        
+                    </div> 
+                    <a href="profile.html" class="profile-more">もっとみる<i class="fa-solid fa-angle-right"></i></a>
+                        <img src="images/girl3.png" alt="" class="girl3">
+                </section>
+                <!--PROFILEここまで-->
+                
+
+                <!--SKILLS-->
+                <section class="skills">
+                    <div class="skills-left">
+                        <div class="skill-design">
+                            <img src="images/design.png" alt="デザインアイコン" class="icon-design">
+                            <div class="text-design-container">
+                                <p class="text-design"><strong>デザイン</strong></p>
+                                <div class="tool-container">
+                                    <p class="tools">Figma</p>
+                                    <p class="tools">Illustration</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-htmlcss">
+                            <img src="images/htmlcss.png" alt="HTML CSSアイコン" class="icon-htmlcss">
+                            <div class="text-htmlcss-container">
+                                <p class="text-htmlcss"><strong>HTML,CSS</strong></p>
+                                <p class="tools">VSCode</p>
+                            </div>
+                        </div>
+                        <div class="skill-illustration">
+                            <img src="images/illustration.png" alt="イラストアイコン" class="icon-illustration">
+                            <div class="text-illustration-container">
+                                <p class="text-illustration"><strong>イラストレーション</strong></p>
+                                <div class="tool-container">
+                                    <p class="tools">アナログ手書き</p>
+                                    <p class="tools">Procreate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-right">
+                        <img src="images/blob-skills.png" class="bg-skills">
+                        <div class="text-overlay">
+                            <p class="label-skills">SKILLS</p>
+                            <img src="images/text-skills.png" alt="できること" class="text-skills">
+                        </div>
+                    </div>
+                </section>
+                <!--SKILLSここまで-->
+                <!--STRENGTH-->
+                <section class="strength">
+                    <div class="strength-heading">
+                        <img src="images/blob-strength.png" alt="" class="bg-strength">
+                        <div class="strength-label-wrapper">
+                            <p class="label-strength">STRENGTH</p>
+                            <img src="images/text-strength.png" alt="わたしの強み" class="text-strength">
+                        </div>
+                    </div>
+                    <div class="container-strength">
+                        <div class="strength-left">
+                            <h2><span></span> イラストもデザインも、一貫しておまかせ。</h2>
+                            <p>「サイトのデザインも、イラストも、全部まとめてお願いできたらいいのに」<br>そんな願いを叶えます。</p><br>
+                            <p>オリジナルイラストを取り入れたデザインで、<br>統一感のある、美しく心に残るサイトをお届けします。</p><br>
+                            <p>デザインとイラストを別々に発注する必要はなく、<br>すべてを一括でおまかせいただけるので、仕上がりもスムーズで高品質です。</p>
+                        </div>
+                        <img src="images/strength-girl.png" alt="" class="strength-girl">
+                        <img src="images/strength-wheelchair.png" alt="" class="strength-wheelchair">
+                        <img src="images/strength-kid.png" alt="" class="strength-kid">
+                        <div class="strength-right">
+                            <h2><span></span> だれにでもやさしい、ユニバーサルなデザイン。</h2>
+                            <p>色覚異常（色弱・白内障など）や視認性に配慮した<br>
+                            ユニバーサルデザインにも対応可能です。</p><br>
+                            <p>色だけに頼らない情報設計や、ふりがな付きレイアウトなど、<br>
+                            高齢者やお子様、障がいのある方にも配慮したデザインをご提案します。</p><br>
+                            <p>また、イラストやピクトグラム、英字を適切に組み合わせることで、<br>年齢・国籍を問わず、誰にでもわかりやすく伝わるデザインを制作いたします。</p>
+                        </div>
+                    </div>
+                </section>
+                <!--STRENGTHここまで-->
+            </main>
+            <!--メインここまで-->
+
+            <!--フッター-->
+            <!--CONTACT-->
+            <div class="contact-wrapper">
+                <section class="contact" id="contact">
+                        <div class="label-container">
+                            <h2 class="label-contact">CONTACT</h2>
+                            <img src="images/text-contact.png" class="text-contact">
+                        </div>
+                        <a href="mailto:hanaokutani.works@gmail.com" class="email">hanaokutani.works@gmail.com<i class="fa-solid fa-arrow-right fa-lg"></i></a>
+                        <a href="https://www.instagram.com/hanaokutani.works/" target="_blank"><i class="fa-brands fa-instagram fa-5x"></i></a>
+                </section>
+                <footer>
+                    <p>&copy; 2025 hanabuska design, designed by Hana Okutani</p>
+                </footer>
+                <!--<img src="images/blob-hero.png" alt="" class="bg-contact">-->
+                <img src="images/girl4.png" alt="" class="girl-footer">
+            </div>
+            <!--フッターここまで-->
+        </div>
+    </body>
+</html>
