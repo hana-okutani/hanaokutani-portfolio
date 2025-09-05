@@ -4,13 +4,10 @@
 			"path": "."
 		},
 		{
-			"path": "../../../../Desktop/Markdown"
-		},
-		{
-			"path": "../../../../Documents/練習用"
+			"path": "../../../../../Desktop/Markdown"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Portfolio"
+		"liveServer.settings.multiRootWorkspaceName": "Code"
 	}
 }

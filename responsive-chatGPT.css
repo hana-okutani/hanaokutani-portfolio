@@ -277,7 +277,7 @@ main h1 {
     background-color: #f8650a;
     border-radius: 50%;
     will-change: transform;
-    animation: scrollY 1.0s linear infinite;
+    animation: scrollY 2.0s linear infinite;
 }
 @keyframes scrollY {
     from {transform: translateY(0px);}
@@ -985,7 +985,7 @@ main h1 {
     background-color: #82b2c5;
     border-radius: 50%;
     will-change: transform;
-    animation: scrollX 1.0s linear infinite;
+    animation: scrollX 1.5s linear infinite;
 }
 @keyframes scrollX {
     from {transform: translateX(0px);}
@@ -1113,6 +1113,8 @@ main h1 {
 }
 
 /*SKILLS*/
+
+
 .skills {
     display: flex;
     align-items: stretch;
@@ -1216,6 +1218,7 @@ main h1 {
 /*HTML,CSS*/
 .skill-htmlcss {
     position: relative;
+    margin-block-start: 40px;
 }
 .skill-htmlcss::before,
 .skill-htmlcss::after {
