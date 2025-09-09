@@ -2269,13 +2269,17 @@ footer p{
   .location { font-size: 13px;}
   .img-profile { 
     position: relative; 
-    top: -20px; left: 20px; 
+    top: 30px; left: 0px; 
     transform: none; 
     min-height: 0; 
     height: clamp(140px, 42vw, 200px);}
     
+    .label-profile {
+        left: 0;
+        top: 12%;
+    }
     .text-profile {
-        left: 40%;
+        left: 0;
         top: 20%;
     }
     .bg-profile {
@@ -2356,7 +2360,7 @@ footer p{
 @media (max-width: 768px) {
   .img-profile {
     position: relative;
-    top: auto;
+    top: -10px;
     left: 50%; /*absoluteの時の中央配置*/
     transform: translateX(-50%); /*absoluteの時の中央配置*/
     min-height: 0;           
