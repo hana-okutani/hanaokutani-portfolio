@@ -1,0 +1,2216 @@
+/* すべてのページに適用する設定 */
+html {
+    color: #312d24;
+    font-family: jost, "Zen Kaku Gothic New", sans-serif;
+    font-size: clamp(16px, 1.2vw + 12px, 18px);
+}
+
+* { box-sizing: border-box;
+}
+
+body{
+    margin: 0 0 0 0;
+}
+
+.wrapper {
+    max-width: min(1200px, 92vw);
+    margin: 0 auto;
+    position: relative;
+    padding-inline: clamp(12px, 3vw, 32px);
+}
+@media (max-width: 1024px) {
+    .wrapper {
+        overflow-x: clip;
+    }
+}
+
+h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); }
+h2 { font-size: clamp(1.2rem, 2vw + 0.5rem, 1.3rem); }
+
+p,li,td {
+    line-height: 1.5rem;
+    letter-spacing: 1.3px;
+}
+
+/* すべてのページに適用する　-ヘッダー- */
+header {
+    display: flex;
+    justify-content: end;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+/* 初期状態 */
+.nav-toggle { 
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+.hamburger {
+    display: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    font-family: jost;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #312d24;
+}
+.nav-underline {
+    position: relative;
+}
+.nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 0.5px;
+    background-color: #6b6969;
+    transition: width 0.5s ease;
+}
+
+.nav-underline:hover::after {
+    width: 100%;
+}
+
+/* =======================
+    レスポンシブ対応
+   ======================= */
+/*　タブレット以下　*/
+/*　スマホ以下　*/
+@media (max-width: 768px) {
+header {
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    background-color: #FBFFE9;
+    z-index: 10;
+}
+nav ul {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: .6rem;
+}
+/* ハンバーガーアイコン表示 */
+    .hamburger{
+        position: fixed;
+        top: 18px;
+        left: 18px;
+        inline-size: 48px;
+        block-size: 48px;
+        display: grid;
+        place-items: center;
+        z-index: 20; /* ナビより上 */
+        cursor: pointer;
+    }
+    .hamburger .bar{
+        position: relative;
+        inline-size: 28px;
+        block-size: 2px;
+        background: #312d24;
+    }
+    .hamburger .bar::before,
+    .hamburger .bar::after{
+        content:"";
+        position: absolute;
+        inset-inline-start: 0;
+        inline-size: 28px;
+        block-size: 2px;
+        background: #312d24;
+        transition: transform .3s ease, opacity .3s ease, top .3s ease, bottom .3s ease;
+    }
+    .hamburger .bar::before{ top: -8px; }
+    .hamburger .bar::after { bottom: -8px; }
+
+    /* モバイルのナビ本体（閉） */
+    header nav{
+        position: fixed;
+        top: 100px; /* あなたの header 高さに合わせる */
+        left: 0;
+        right: 0;
+        background: #FBFFE9;
+        transform: translateY(-12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease;
+        z-index: 15;
+    }
+    header nav ul{
+        display: grid;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    /* チェック時（開） */
+    .nav-toggle:checked ~ .hamburger .bar{
+        background: transparent;
+    }
+    .nav-toggle:checked ~ .hamburger .bar::before{
+        top: 0;
+        transform: rotate(45deg);
+    }
+    .nav-toggle:checked ~ .hamburger .bar::after{
+        bottom: 0;
+        transform: rotate(-45deg);
+    }
+    .nav-toggle:checked ~ nav{
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* 任意：開いている間のスクロールロック（対応ブラウザで効く） */
+    body:has(.nav-toggle:checked){
+        overflow: hidden;
+    }
+    }
+
+
+/* すべてのページに適用する設定　-メイン- */
+main h1 {
+    font-family: Jost;
+    color: #03D935;
+}
+
+
+.section {
+    position: relative;
+}
+
+/* すべてのページに適用する設定  -ヒーロー- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+    overflow: visible; /* ふわふわを画面外まで見せたいので切らない */
+}
+/*ロゴ・見出し*/
+
+.hero-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    position: absolute;
+    width: clamp(300px, 44vw, 540px);
+    top: 280px;
+    left: 10%;
+    z-index: 2;
+}
+.label-hero {
+    position: absolute;
+    display: inline-block;   
+    top: 23%;
+    left: 60%;
+    z-index: 1;
+}
+
+.text-webdesign {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    padding: 0;
+}
+
+.highlight {
+    font-size: 80px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    display: block;
+    margin-top: -10px;
+}
+
+
+/*スクロール*/
+.scroll-indicator {
+    transform: translateY(-50%);
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    z-index: 10;
+}
+
+.scroll-text {
+    font-size: 16px;
+    letter-spacing: 2px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: #312d24;
+}
+.scroll-line {
+    position: relative;
+    display: inline-block;
+    width: 3px;
+    height: 60px;
+    border-left: 4px dotted #625555;
+    margin-top: 8px;
+}
+.scroll-line::after { /*球を線の擬似要素にすれば、線の上に合わせられる*/
+    content: "";
+    position: absolute;
+    width: 16px;
+    aspect-ratio: 1/1;
+    top: -8px; /*球の約半分くらいをマイナスすれば真ん中にくる*/
+    left: -10px;/*これは-8pxだとややずれていたので微調整した*/
+    background-color: #f8650a;
+    border-radius: 50%;
+    will-change: transform;
+    animation: scrollY 2.0s linear infinite;
+}
+@keyframes scrollY {
+    from {transform: translateY(0px);}
+    to {transform: translateY(60px);}
+}
+
+/* 兄弟要素としてdotと線とテキストを縦に並べていたので、lineにrelative、dotにabsoluteを指定したところで線の上を球が動いてくれなかった。
+.scroll-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -8px;
+    aspect-ratio: 1/1;
+    width: 16px;
+    background-color: #f8650a;
+    border-radius: 50%;
+    will-change: transform;
+    animation: translateXY 1s infinite;
+}
+
+@keyframes translateXY {
+    0% {transform: translateY(0%)}
+    100% {transform: translateY(50px);}　←100%だと、玉の高さ=16pxしか動かないよ！線の高さ=50pxに指定しよう
+}
+*/
+
+/*ヒーローの背景*/
+.bg-circle {
+    position: fixed;          /* ★ ビューポート基準に → 画面外へ出しても横スクが出ない */
+    inset: auto;              /* 既存の top/left/right 指定を優先 */
+    z-index: -1;
+    pointer-events: none;     /* 操作の邪魔をしない */
+    will-change: transform;
+
+    /*ふわふわアニメーションは別途勉強し直すこと！！*/
+    animation: float-xy 12s ease-in-out infinite alternate,
+    float-rot 28s linear infinite;
+}
+.bg-circle.yellow {
+    transform: rotate(200deg);
+    top: -100px;
+    left: -10px;
+    width: 300px;
+    animation-duration: 14s, 32s;
+    animation-delay: -2s, 0s;
+}
+.bg-circle.green {
+    top: 80px;
+    right: 10px;
+    width: 50%;
+    margin-top: 100px;
+    animation-duration: 11s, 26s;
+    animation-delay: 0s, -8s;
+}
+/* ゆっくり上下左右に漂う */
+@keyframes float-xy {
+    0%   { transform: translate3d(0,   0, 0)  scale(1.00); }
+    25%  { transform: translate3d(6px,-8px,0) scale(1.02); }
+    50%  { transform: translate3d(0, -14px,0) scale(1.01); }
+    75%  { transform: translate3d(-8px,8px,0) scale(0.99); }
+    100% { transform: translate3d(6px, 4px,0) scale(1.00); }
+}
+
+/* ほんの少しだけ回転（やりすぎ注意） */
+@keyframes float-rot {
+    0%   { rotate: 0deg; }
+    100% { rotate: 4deg; }  /* 2〜6deg くらいが自然 */
+}
+
+/* モーション酔いに配慮（OSの設定を尊重） */
+@media (prefers-reduced-motion: reduce) {
+    .bg-circle { animation: none; }
+}
+
+/* モバイルは演出弱めに（負荷＆視覚ノイズを抑える） */
+@media (max-width: 768px) {
+    .bg-circle { animation: float-xy 10s ease-in-out infinite alternate; }
+}
+
+
+/*スライダーと女の子を横に並べる*/
+.slider {
+    position: relative;
+    display: flex;
+    gap: 30px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    z-index: 3;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw); /* ラッパーの左右余白を無視してはみ出させる */
+}
+/*スライドないの画像やプレースホルダーを横に並べる*/
+.slide-track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;  
+    will-change: transform;
+    animation: scroll-left 15s linear infinite;
+}
+.slider-bottom .slide-track,.slide-track.reverse {
+    position: relative;
+    animation-name: scroll-right;
+}
+/* 無限スクロールのキーフレーム */
+@keyframes scroll-left {
+    0%   { transform: translateX(0);     }
+    100% { transform: translateX(-500%); } /* 中身を2倍にしておく前提（下に説明） */
+}
+@keyframes scroll-right {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(500%);    }
+}
+
+/* 女の子もトラックと一緒に動かすための調整（任意） */
+.girl {
+  pointer-events: none;  /* 操作の邪魔をしない */
+    z-index: 2;
+    top: 50%; 
+    transform: translateY(-50%);
+}
+.girl.right  { transform: translateY(-50%) rotate(5deg); }
+
+
+/*スライドtopとbottomを上下縦に分けて配置するための、flex用の親要素（親.heroだと全部縦並びになってしまう）*/
+.slide-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 260px;
+    z-index: 3;
+}
+
+.slider-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /*transform: translateX(300px);*/
+    transform: none;
+}
+
+.slider-bottom {
+    display: flex;
+    justify-content: flex-start;
+    /*transform: translateX(-300px);*/
+    transform: none;
+    margin-bottom: 100px;
+}
+
+.work-thumb-top {
+    max-width: 300px;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.work-thumb-bottom {
+    max-width: 300px;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.girl.left {
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: -12%;
+}
+
+.girl.right {
+    height: 70%;
+    position: absolute;
+    transform: rotate(5deg);
+    top: 50%;
+    right: -8%;
+}
+/* --- 女の子が切れず、縦スクロールも出さない --- */
+
+/* 1) .slider は縦方向はクリップに戻す（横は隠すまま） */
+.slider{
+    overflow-x: hidden;
+  overflow-y: clip; /* ← visible をやめる（scrollバーの原因を断つ） */
+}
+
+/* 2) 女の子の“置き場所”を中で確保（絶対配置は高さに乗らないため） */
+.slide-track{
+  padding-bottom: clamp(40px, 12vw, 180px); /* 下に空間を作る */
+  min-height: clamp(220px, 26vw, 420px);    /* サムネ＋女の子ぶんの最低高さ */
+}
+
+/* 3) 女の子のサイズ＆縦位置を安定化（%依存だと親次第でブレやすい） */
+.girl{
+  height: clamp(180px, 28vw, 420px); /* 画面に応じて可変・上限下限つき */
+    top: 50%;
+  transform: translateY(-50%);       /* 真ん中基準にして下にはみ出しにくく */
+    pointer-events: none;
+}
+.girl.right{ transform: translateY(-50%) rotate(5deg); } /* 既存の回転は維持 */
+/*木々と概要*/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.tree {
+    position: absolute;
+    z-index: -1;
+    height: 120px;
+}
+.tree.tree-1 {
+    left: 10%;
+    top: 10px;
+    transform: rotate(-5deg);
+}
+.tree.tree-2 {
+    left: 70%;
+    top: 140px;
+    transform: rotate(5deg);
+}
+.tree.tree-3 {
+    height: 80px;
+    left: 80%;
+    top: 0px;
+    transform: rotate(5deg);
+}
+.text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text p{
+    text-align: center;
+    line-height: 1.6rem;
+    font-weight: 500;
+}
+/* =======================
+    レスポンシブ対応
+   ======================= */
+/*　タブレット以下　*/
+@media (max-width: 1024px) {
+.hero-inner {
+    display: flex;
+    flex-direction: column;
+}
+.logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin: 40px auto 0;
+    display: block;
+}
+.label-hero {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 20px auto 50px auto;
+    text-align: center;
+}
+.highlight {
+    font-size: 40px;
+}
+.slide-wrapper {
+    gap: 40px;
+}
+.text p {
+    text-align: start;
+    padding-inline: 23px;
+}
+.tree {
+    max-height: 80px;
+    min-height: 40px;
+}
+.slide-track {
+    animation: scroll-left 15s linear infinite;
+}
+
+
+/* 無限スクロールのキーフレーム */
+@keyframes scroll-left {
+    0%   { transform: translateX(0);     }
+    100% { transform: translateX(-200%); } /* 中身を2倍にしておく前提（下に説明） */
+}
+@keyframes scroll-right {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(200%);    }
+}
+}
+
+/*　スマホ以下　*/
+@media (max-width: 769px) {
+.logo {
+    width: 70%;
+}
+
+.bg-circle.yellow {
+    top: 50px;
+    left: -40px;
+}
+.bg-circle.green {
+    top: 280px;
+}
+.hero {
+    padding-block-start: 10rem;
+}
+.slider-top,.slider-bottom {
+    display: none;
+}
+.text-webdesign {
+    font-size: 18px;
+}
+.br-sp-none {
+    display: none;
+}
+
+.scroll-indicator {
+    padding-block-start: 200px;
+}
+}
+/*ヒーローここまで*/
+
+
+/*WORKS*/
+.works {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin: 10% 0 10% 0;
+    width: 100%;
+    overflow-x: clip;
+}
+.works-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    min-height: 700px;
+    z-index: -1;
+}
+
+.bg-works {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    height: auto;
+    aspect-ratio: 3/4;
+    width: min(560px, 90vw);
+    
+/*ふわふわアニメーション*/
+    will-change: transform;
+    animation: float-xy 12s ease-in-out infinite alternate,
+    float-rot 28s linear infinite;
+    animation-duration: 14s, 32s;
+    animation-delay: -5s, 0s;
+}
+@keyframes float-xy {
+    0%   { transform: translate3d(0,   0, 0)  scale(1.00); }
+    25%  { transform: translate3d(6px,-8px,0) scale(1.02); }
+    50%  { transform: translate3d(0, -14px,0) scale(1.01); }
+    75%  { transform: translate3d(-8px,8px,0) scale(0.99); }
+    100% { transform: translate3d(6px, 4px,0) scale(1.00); }
+}
+/* ほんの少しだけ回転（やりすぎ注意） */
+@keyframes float-rot {
+    0%   { rotate: 0deg; }
+    100% { rotate: 4deg; }  /* 2〜6deg くらいが自然 */
+}
+
+.text-works {
+    position: absolute;
+    z-index: 2;
+    width: clamp(250px, 16vw, 300px);
+    top: 40%;
+    left: 10%;
+}
+.label-works {
+    color: #43BB91;
+    font-family: jost;
+    font-weight: 600;
+    font-size: 38px;
+    letter-spacing: 4px;
+    position: absolute;
+    z-index: 2;
+    top: 200px;
+    left: 30%;
+}
+
+.works-right {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2.5vw, 24px);
+    padding: 30px;
+}
+
+.work-item { /*work-linkの親要素*/
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+    max-width: 100%;
+}
+
+.work-thumb { /*work-linkの子要素*/
+    width: 100%;
+    max-width: 300px;
+}
+
+.work-about {
+    display: none;
+}
+
+.work-link { /*今回は「ホバー時に少し白みがかかる」CSSを書きます！*/
+    position: relative; /*オーバーレイの配置基準として*/
+    display: inline-block; /*<a>linkタグはデフォルトでインライン要素。親要素work-itemにリンクを重ねるため&*/
+}
+
+.work-link::after { /*オーバーレイは擬似要素*/
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0; /*absolute, top0, left0の指定でwork-linkにピッタリ重ねる*/
+    width: 100%; height: 100%; /*サイズは親要素とピッタリ同じで*/
+    background: rgba(255, 255, 255, 0.3);/*白の半透明*/
+    opacity: 0;/*大事！！せっかく書いたけどホバー時に表示したいので今は0*/
+    transition: opacity 0.3s ease; /*opacity呼び出し、0.3秒でじんわり入る。*/
+    /*transitionは「どう変わるか」のルールなので、非ホバー時のここに書くのが基本*/
+}
+.work-link:hover::after { /*順番が大事。::after:hoverだと適用されないので注意。hoverには最終的な値だけを書く*/
+    opacity: 1; /*1＝100％*/
+}
+
+/*WORKの下の女の子*/
+.girl5 {
+    position: absolute;
+    top: 400px;
+    right: 0;
+    transform: rotate(-80deg);
+    width: 30%;
+}
+.works-more {
+    display: none;
+}
+
+.fa-angle-right {
+    display: inline-block;
+}
+
+/* =======================
+    レスポンシブ対応
+   ======================= */
+@media (max-width: 1300px) {
+    .works {
+        min-width: 0;
+        max-width: 100%;
+        align-items: center;
+    }
+    .bg-works {
+        left: 0;
+    }
+    .works-right {
+        grid-template-columns: repeat(2, minmax(110px, 1fr));
+        gap: 20px;
+    }
+}
+@media (max-width: 768px){
+    .works {
+        flex-direction: column;
+        gap: 32px;
+        padding: 0 0 140px;
+    }
+    .works-left, .works-right {
+        width: 100%;
+    }
+    .works-left {
+        margin-bottom: -300px;
+    }
+    .works-right {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    /*4つ以上は隠して表示を3つまでにする ※まだworkページを作っていないので今回は隠す
+        .works-right .work-item:nth-of-type(n+4) { 
+        display: none; 
+    }*/
+
+    /*スマホ幅ではリンクをなくす*//* 画像カード内のリンクだけ無効化する（もっと見るは対象外） */
+    .work-item .work-link{
+        pointer-events: none; /* クリックできなくする */
+        cursor: default;       /* カーソルを普通の矢印に */
+    }
+
+    .bg-works {
+        top: 20%;
+        width: 100%;
+    }
+    .label-works {
+        left: 10%;
+    }
+    .text-works {
+        left: 10%;
+        max-width: 100%;
+    }
+    .placeholder-works {
+        width: 80%;
+        height: clamp(180px, 40vw, 2670px);
+        margin: 0 auto;        
+    }
+    .girl5 {
+        display: none;
+    }
+    .works-more {
+        text-decoration: none;
+        width: 100%;
+        height:  clamp(80px, 4vw, 70px);
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        margin-inline: auto;
+        border-radius: 50px;
+        background-color: #E8D6C8;
+        font-size: clamp(16px, 4vw, 20px);
+        font-weight: 500;
+        color: #43BB91;
+        padding: 1em;
+        position: relative; z-index: 5;
+    }
+    /* ① 1列時でも中央に来るように：各グリッドセル内の配置を中央寄せ */
+    .works-right { 
+    justify-items: center;  /* Grid版のtext-align:center的な効き方 */
+    }
+
+    /* ② モバイル時の余白を詰める＆不自然な正方形をやめる（ネストを解消） */
+    .works-right{
+        gap: clamp(16px, 3.5vw, 28px);
+    }
+    .work-item{
+        width: auto;              /* グリッドセル内で中身の幅に合わせる */
+        aspect-ratio: auto;       /* 1/1 を解除して画像比率に任せる */
+        justify-self: center;     /* 念のためセル自体も中央に */
+    }
+
+    /* ③ 画像／リンクの整列：リンクをインラインブロックからブロックにして中央寄せ */
+    .work-link{
+        display: block;
+        width: fit-content;
+        margin-inline: auto;
+        margin-block-end: 26px;    
+    }
+    .works-more.top { 
+        margin-block-end: 50px;
+    }
+
+    /* ③ 画像自体を確実に中央へ */
+    .work-thumb{
+    display: block;          /* 画像のデフォルトの余白/ベースライン影響を消す */
+    margin-inline: auto;     /* 中央寄せ */
+    width: 100%;             /* 親幅いっぱい */
+    max-width: 520px;        /* 大きくなり過ぎない上限（好みで調整） */
+    }
+}
+    /* ④ 念のため：Gridセルを画像サイズに合わせたい場合の代替（不要なら消してOK） */
+    /* .work-item { display: grid; place-items: center; } */
+
+/*PROFILE*/
+.profile {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(24px, 6vw, 80px) 0;
+    width: 100%;
+    overflow-x: clip;
+}
+.profile-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 700px;
+    width: 40%;
+}
+
+.bg-profile {
+    position: absolute;
+    z-index: -1;
+    width: 160%;
+    top: -100px;
+    left: 0;
+    transform: rotate(10deg);
+/*ふわふわアニメーション*/
+    will-change: transform;
+    animation: float-xy 12s ease-in-out infinite alternate,
+                float-rot 28s linear infinite;
+    animation-duration: 14s, 32s;
+    animation-delay: -3s, 0s;
+}
+@keyframes float-xy {
+    0%   { transform: translate3d(0,   0, 0)  scale(1.00); }
+    25%  { transform: translate3d(6px,-8px,0) scale(1.02); }
+    50%  { transform: translate3d(0, -14px,0) scale(1.01); }
+    75%  { transform: translate3d(-8px,8px,0) scale(0.99); }
+    100% { transform: translate3d(6px, 4px,0) scale(1.00); }
+}
+/* ほんの少しだけ回転（やりすぎ注意） */
+@keyframes float-rot {
+    0%   { rotate: 0deg; }
+    100% { rotate: 4deg; }  /* 2〜6deg くらいが自然 */
+}
+
+
+.label-profile {
+    color: #EbEEDA;
+    font-weight: 600;
+    font-size: 38px;
+    letter-spacing: 4px;
+    position: absolute;
+    z-index: 1;
+    top: 160px;
+    left: 30%;
+}
+.text-profile {
+    position: absolute;
+    z-index: 1;
+    width: 250px;
+    top: 230px;
+    left: 25%;
+}
+.img-profile {
+    position: absolute;
+    z-index: 1;
+    height: clamp(100px, 30vw, 300px);
+    max-height: 400px;
+    border-radius: 40%;
+    top: 300px;
+    left: 60%;
+    transform: translateX(-30%);
+}
+.profile-right {
+    width: 53%; /*.profileのdisplay:flex;を効かせるにはこのwidth指定が大事*/
+    padding-inline: clamp(12px, 3vw, 40px);
+    position: relative;
+    font-size: 17px;
+}
+.profile-right h2 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Zen Kaku Gothic New';
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.en {
+    font-family: jost;
+    font-size: 70%;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.location {
+    margin-block: 1px;
+}
+.profile-right .bio {
+    max-width: 68ch;
+    margin-bottom: 10px;
+}
+.profile-right .bio p {
+    line-height: 1.8;
+    margin-block: 18px;
+    overflow-wrap: break-word; /* 単語が長すぎた場合は仕方なく折る */
+}
+.more-indicator {
+    position: absolute;
+    right: clamp(8px, 2vw, 12px);
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    color: #312d24;
+}
+.more-line {
+    position: relative;
+    width: 50px;
+    height: 1px;
+    border-top: 4px dotted #6b6969;
+}
+.more-line::after { /*球を線の擬似要素にすれば、線の上に合わせられる*/
+    content: "";
+    position: absolute;
+    width: 18px;
+    aspect-ratio: 1/1;
+    top: -10px; /*球の約半分くらいをマイナスすれば真ん中にくる*/
+    left: -9px;/*これは-8pxだとややずれていたので微調整した*/
+    background-color: #82b2c5;
+    border-radius: 50%;
+    will-change: transform;
+    animation: scrollX 1.5s linear infinite;
+}
+@keyframes scrollX {
+    from {transform: translateX(0px);}
+    to {transform: translateX(50px);}
+}
+/*
+.more-dot {
+    width: 18px;
+    height: 18px;
+    background-color: #82b2c5;
+    border-radius: 50%;
+}
+*/
+.more-text {
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.more-text::after {
+    content: "";
+    width: 0;
+    height: 0.5px;
+    background-color: #534e47;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: width 0.5s ease;
+}
+.more-text:hover::after {
+    width: 100%;
+}
+.profile-more {
+    display: none;
+}
+
+
+/* =======================
+    レスポンシブ対応
+   ======================= */
+@media (max-width: 1300px) {
+    .bg-profile {
+        top: 15%;
+    }
+    .img-profile {
+        left: 40%;
+    }
+    .more-indicator {
+        transform: translateX(-30%);
+    }
+    .more-text {
+        white-space: nowrap; /*折り返さないようにする*/
+    }
+    .girl3 {
+        display: none;
+    }
+
+}
+@media (max-width: 768px) {
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .profile-left {
+        margin-bottom: 0px;
+    }
+    .profile-right {
+        padding-top: 0;
+        width: 80%;
+    }
+    .label-profile {
+        transform: translate(-40%, -90%);
+    }
+    .text-profile {
+        transform: translate(-40%, -10%);
+    }
+    .bg-profile {
+        width: 200%;
+        transform: translate(-25%,-20%)
+    }
+    .img-profile {
+        min-height: 300px;
+        top: 50%;
+        transform: translateX(-41%);    
+    }
+    .profile-wrapper h2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1px;
+    }
+    .more-indicator {
+        display: none;
+    }
+    .profile-more {
+    text-decoration: none;
+    width: 80%;
+    height:  clamp(80px, 4vw, 70px);
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-inline: auto;
+    border-radius: 50px;
+    background-color: #F69138;
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: 500;
+    color: #E8EEDA;
+    padding: 1em;
+    margin-block: 3rem;
+    }
+
+    
+}
+/*PROFILEの下の女の子*/
+.girl3 {
+    position: absolute;
+    top: 85%;
+    left: 0;
+    width: 30%;
+    transform: scaleX(-1); /*rolateとは併用できない？*/
+}
+
+/*SKILLS*/
+
+
+.skills {
+    display: flex;
+    align-items: stretch;
+    overflow-x: clip;
+}
+.skills-left {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 70%;
+    position: relative;
+    gap: clamp(20px, 3.2vw, 30px); /* カード間の余白を広めに */
+    margin-right: clamp(-24px, -3vw, -300px); /* 右側に少し食い込ませる */
+    z-index: 2; /* 右背景より上に出す */
+}
+.skills-right {
+    position: relative;
+    display: flex;
+    min-height: clamp(560px, 40vw, 520px);
+    left: -10%;
+    width: 30%;
+    flex-direction: column;
+}
+/* 左カラムの3カードを均等配分しつつ縮められるように */
+/* 3カード共通：同じ高さで中身を気持ちよく配置 */
+.skill-design,
+.skill-htmlcss,
+.skill-illustration {
+    flex: 1 1 0;          /* ★ これで等幅に */
+    min-width: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;  
+    align-items: end;
+    row-gap: clamp(8px, 2.5vw, 20px);
+    min-height: clamp(250px, 26vw, 320px);
+    padding-block: clamp(12px, 2vw, 24px);
+}
+/*skills-rightの中身*/
+.bg-skills {
+    position: absolute;
+    top: 0;
+    left: 10%;
+/*ふわふわアニメーション*/
+    will-change: transform;
+    animation: float-xy 12s ease-in-out infinite alternate,
+                float-rot 28s linear infinite;
+    animation-duration: 14s, 32s;
+    animation-delay: -10s, 0s;
+}
+@keyframes float-xy {
+    0%   { transform: translate3d(0,   0, 0)  scale(1.00); }
+    25%  { transform: translate3d(6px,-8px,0) scale(1.02); }
+    50%  { transform: translate3d(0, -14px,0) scale(1.01); }
+    75%  { transform: translate3d(-8px,8px,0) scale(0.99); }
+    100% { transform: translate3d(6px, 4px,0) scale(1.00); }
+}
+/* ほんの少しだけ回転（やりすぎ注意） */
+@keyframes float-rot {
+    0%   { rotate: 0deg; }
+    100% { rotate: 6deg; }  /* 2〜6deg くらいが自然 */
+}
+
+
+.label-skills {
+    position: absolute;
+    color: #1E9756;
+    font-weight: 600;
+    font-size: 38px;
+    letter-spacing: 4px;
+    top: 35%;
+    left: 65%;
+}
+.text-skills {
+    position: absolute;
+    width: clamp(150px, 3vw, 600px);
+    left: 65%;
+    top: 55%;
+}
+
+/*sklls-leftの中身*/
+/*デザイン*/
+.text-design-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+.text-design {
+    margin: 0;
+    font-size: 20px;
+}
+.icon-design   { 
+    max-width: clamp(140px, 10vw, 180px); 
+    width: 100%;
+    height: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+/*HTML,CSS*/
+.skill-htmlcss {
+    position: relative;
+    margin-block-start: 40px;
+}
+.skill-htmlcss::before,
+.skill-htmlcss::after {
+    content: "";
+    position: absolute;
+    top: 20%;           /* ★ 開始位置 */
+    bottom: 20%;        /* ★ 終了位置（＝短くする） */
+    width: 0;
+    border-left: 6px dotted #1E9756;
+}
+.skill-htmlcss::before { 
+    left: 0; 
+}
+.skill-htmlcss::after  { 
+    right: 0; 
+}
+
+.text-htmlcss-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+.text-htmlcss {
+    font-family: 'Noto San JP';
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin: 0;
+}
+.text-htmlcss-container .tools {
+    border: 2px solid #C3D4DB;
+    border-radius: 20px; /*%で指定しちゃうと綺麗な角丸にならない。*/
+    padding: 1px 8px 1px 8px;
+    margin: 0;
+    font-size: 12px;
+}
+.icon-htmlcss  { 
+    max-width: clamp(140px, 10vw, 180px); 
+    width: 100%;
+    height: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+/*イラストレーション*/
+.text-illustration-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+.text-illustration {
+    margin: 0;
+    font-size: 20px;
+}
+.icon-illustration {
+    max-width: clamp(140px, 10vw, 140px); 
+    width: 100%;
+    height: auto;
+    justify-self: center;
+    align-self: center;
+}
+.tool-container {
+    display: flex;
+    gap: clamp(8px, 1.6vw, 13px);
+    flex-wrap: nowrap;          /* ピルを1行維持 */
+}
+.tool-container p {
+    border: 2px solid #C3D4DB;
+    border-radius: 20px;
+    padding: 1px 8px 1px 8px;
+    margin: 0;
+    white-space: nowrap;        /* 文言を折り返さない */
+    font-size: clamp(12px, 1.1vw, 16px); /* 横幅が足りないときに自動で少し縮む */
+}
+
+
+/* =======================
+    レスポンシブ対応
+   ======================= */
+@media (min-width: 1300px) {
+    .skills-left { flex-wrap: nowrap; }
+    .skill-design,
+    .skill-htmlcss,
+    .skill-illustration { max-width: 100%; }
+    }
+
+    @media (max-width: 1299px) {
+    .skills {
+        display: flex;
+        align-items: stretch;
+        overflow-x: clip;
+        flex-direction: column-reverse; /* columnにすることで縦に並ぶ*/
+    }
+    .bg-skills {
+        left: 30%;
+        border: 1px solid blue;
+    }
+    .skills-right {
+        margin-block-start: 50px;
+    }
+    .skills-left {
+        width: 100%;
+        margin-block-start: -150px;
+    }
+    }
+
+@media (max-width: 970px) {
+    .skills {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .skills-right {
+        max-width: 100%;
+        z-index: -1;
+    }
+    .skills-left {
+        max-width: 100%;
+        width: 100%;
+        margin-top: -110px;
+        gap: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .bg-skills {
+        transform: rotate(90deg);
+        top: -10%;
+        left: 0;
+    }
+    .label-skills {
+        left: -10%;
+    }
+    .text-skills {
+        top: 50%;
+        left: -10%;
+    }
+    .skill-design {
+        width: 100%;
+    }
+    .skill-htmlcss {
+        width: 80%;
+    }
+    .skill-htmlcss::after, .skill-htmlcss::before {
+        display: none;
+
+    }
+    .skill-illustration {
+        width: 100%;
+    }
+}
+
+/*STRENGTH*/
+.strength {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-block: clamp(80px, 12vw, 180px); /* 上下セクションとの距離 */
+    overflow-x: clip;
+}
+.strength-heading {
+    position: relative;               /* ラベル類の基準 */
+    margin-bottom: 100px;
+    max-width: 50%;
+    width: 100%;
+    min-height: clamp(280px, 36vw, 460px); /* 下方向に余白を増やして移動余地を作る */
+    display: block;
+}
+
+.bg-strength {
+    position: absolute;               /* 背景は見出し内で絶対配置 */
+    z-index: -1;                      /* 背面へ */
+    top: 0;
+    left: 0;
+    width: clamp(800px, 4vw, 800px);
+
+/*ふわふわアニメーション*/
+    will-change: transform;
+    animation: float-xy 12s ease-in-out infinite alternate,
+                float-rot 28s linear infinite;
+    animation-duration: 14s, 32s;
+    animation-delay: -8s, 0s;
+}
+
+@keyframes float-xy {
+    0%   { transform: translate3d(0,   0, 0)  scale(1.00); }
+    25%  { transform: translate3d(6px,-8px,0) scale(1.02); }
+    50%  { transform: translate3d(0, -14px,0) scale(1.01); }
+    75%  { transform: translate3d(-8px,8px,0) scale(0.99); }
+    100% { transform: translate3d(6px, 4px,0) scale(1.00); }
+}
+/* ほんの少しだけ回転（やりすぎ注意） */
+@keyframes float-rot {
+    0%   { rotate: 0deg; }
+    100% { rotate: 4deg; }  /* 2〜6deg くらいが自然 */
+}
+
+
+
+/* ラベルと「私の強み」をレイアウト安定化。サブ画像は絶対配置・下側スペース確保 */
+.strength-label-wrapper {
+    position: relative;
+    display: block;                     /* グリッド→ブロックに */
+    padding-left: clamp(10%, 12vw, 22%);
+    padding-top: clamp(6px, 2vw, 24px);
+    padding-bottom: clamp(120px, 14vw, 260px); /* ★ 下側に常に“置き場所”を確保 */
+    margin-top: 30%;
+}
+
+.label-strength {
+    color: #f8650a;
+    font-weight: 600;
+    font-size: 38px;
+    letter-spacing: 4px;
+    margin: 0;
+    position: absolute;  
+    top: clamp(60px, 6vw, 200px); 
+}
+
+/* サブ画像を常に同じ位置に絶対配置・内容下と重ならない */
+.text-strength {
+    position: absolute;                 /* ★ 固定配置（親基準） */
+    width: clamp(220px, 40%, 300px);
+    top: clamp(60px, 9vw, 300px);       /* ★ 縦位置：画面幅が変わっても上下しにくい */
+    left: clamp(22%, 24vw, 34%);        /* ★ 横位置 */
+}
+/*strengthのテキスト*/
+.container-strength{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: start;
+    gap: clamp(16px, 6vw, 200px);
+    position: relative;
+}
+
+.strength-left {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    max-width: 68ch;
+    padding-inline: clamp(16px, 4vw, 48px);
+}
+.strength-right {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    max-width: 68ch;
+    padding-inline: clamp(16px, 4vw, 48px);
+}
+.strength-left p{ 
+    max-width: 68ch;
+    margin: 0;
+    overflow-wrap: break-word; /* 単語が長すぎた場合は仕方なく折る */
+}
+.strength-left h2{
+    font-family: 'Zen Kaku Gothic New';
+    margin-bottom: 50px;
+}
+.strength-left span{
+    display: inline-block;
+    width: 20px;
+    aspect-ratio: 1/1;
+    background-color: #55B58B;
+    border-radius: 50%;
+}
+
+.strength-right p{
+    max-width: 68ch;
+    line-height: 1.8;
+    margin-block: 1px;
+    letter-spacing: 1px;
+    margin: 0;
+    overflow-wrap: break-word; /* 単語が長すぎた場合は仕方なく折る */
+}
+.strength-right h2{
+    font-family: 'Zen Kaku Gothic New';
+    margin-bottom: 50px;
+}
+.strength-right span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;    
+    background-color: #EDC09D;
+    border-radius: 50%;
+}
+
+.strength-girl {
+    position: absolute;
+    top: -200px;
+    left: 65%;
+    width: 20%;
+    transform: scaleX(-1);
+}
+.strength-wheelchair {
+    position: absolute;
+    top: 50%;
+    width: 20%;
+    left: 10%;
+}
+.strength-kid {
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    width: 10%;
+
+}
+/* =======================
+    レスポンシブ対応
+   ======================= */
+@media (max-width: 1300px) {
+    .container-strength {
+        width: 100%;
+        gap: 100px;
+        margin-top: -10px;
+    }
+    .strength-left, .strength-right {
+        margin: 0;
+        padding-inline: 16px;
+    }
+    .strength-left p, .strength-right p {
+        max-width: 100%;
+    }
+    .strength-wheelchair {
+        display: none;
+    }
+    .strength-kid {
+        display: none;
+    }
+    /* STRENGTHラベル周りの余白調整 */
+    .strength-label-wrapper { padding-bottom: clamp(140px, 20vw, 300px); }
+    .text-strength { top: clamp(70px, 10vw, 160px); }
+}
+@media (max-width: 768px) {
+    .strength {
+        max-width: 100%;
+    }
+    .strength-heading {
+        margin-bottom: 0;
+    }
+    .container-strength {
+        margin-top: 0;
+    }
+    .bg-strength {
+        width: 300%;
+    }
+    /* STRENGTH（スマホ） */
+    .strength-label-wrapper { 
+        padding-left: clamp(4%, 8vw, 12%);
+        row-gap: clamp(10px, 3vw, 18px);
+        margin-top: clamp(8px, 4vw, 24px);
+    }
+    .label-strength { font-size: clamp(26px, 5vw, 34px); }
+    .text-strength  { 
+        width: clamp(180px, 60%, 300px); 
+        top: 70%;
+    }
+    .strength-girl {
+        display: none;
+    }
+    .bg-circle { position: absolute; }  /* スマホは固定を解除して従来の見た目に */
+}
+
+/* すべてのページに適用する設定　-フッター- */
+/*お問い合わせ*/
+.contact-wrapper{
+    position: relative;
+    padding-top: 100px;
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 4vw, 32px);
+}
+.contact-wrapper::before{ 
+    /*絶対配置の <img> をやめ、擬似要素で背景扱いにするとスクロールや重なりに強い*/
+    content:"";
+    position: absolute;
+    inset: -5% 0;                      /* 大きめに敷く */
+    background: url(images/blob-hero.png) no-repeat center / contain;
+    z-index:-1;
+    pointer-events:none;
+}
+.contact {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: clamp(16px, 4vw, 32px);
+}
+.label-container {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.label-contact {
+    font-size: 58px;
+    color: transparent;              /* 塗りつぶしを透明にする */
+    -webkit-text-stroke: 2px #FBFFE9;
+    text-shadow:  8px 6px rgba(0,0,0,0.05);  /* ふわっとした影 */
+    margin: 0;
+}
+.text-contact {
+    width: clamp(200px, 3vw, 500px);
+}
+.email {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: clamp(8px, 2vw, 16px); 
+    padding: clamp(16px,3vw,30px) clamp(24px,6vw,80px);
+    font-size: clamp(14px, 4vw, 46px);
+    font-weight: 600;
+    letter-spacing: 4px;
+    border-radius: 60px;
+    border: 0.5px solid #312d24;
+    color: #03D935;
+    background-color: #f9fce7;
+    position: relative;
+    max-width: 100%;
+    white-space: nowrap;
+}
+.email:hover {
+    background-color: rgba(230, 246, 206, 0.9);
+    border: 0.5px solid rgba(37, 36, 32, 0.5);
+    transition: 0.3s ease;
+}
+
+.fa-arrow-right {
+    color: #403a35;
+    transform: rotate(-45deg);
+    margin: 0;
+}
+.fa-instagram {
+    color: #403a35;
+    margin: 0;
+    width: clamp(50px, 6vw, 200px);
+}
+
+.girl-footer {
+    position: absolute;
+    bottom: -210px;
+    left: 60%;
+    width: clamp(260px, 40vw, 560px);
+    transform: rotate(15deg);
+    pointer-events: none; /*女の子がボタンの上に来てても、下のボタンをクリックできる*/
+    z-index: 99;
+}
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+footer p{
+    text-align: center;
+    align-items: center;
+    color: #6b6969;
+    font-weight: 400;
+}
+
+/* =======================
+    レスポンシブ対応
+   ======================= */
+@media (max-width: 1300px) {
+    .email {
+        letter-spacing: 1px;
+    }
+    }
+@media (max-width: 1311px) {
+    .girl-footer {
+        display: none;
+    }
+    }
+@media (max-width: 598px) {
+    footer p {
+        font-size: clamp(10px, 2vw, 12px);
+        white-space: nowrap;
+        letter-spacing: 1px;
+    }
+}
+
+/* profile.html */
+.hero {
+    width: 100%;
+}
+.hero-profile {
+    position: relative;
+    padding-top: 50px;
+}
+.img-profile-page {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 90%;
+    mask-image: url(images/mask.svg); /*マスク画像*/
+    mask-size: contain; /*マスクと画像のずれやはみだしを無くす*/
+    mask-repeat: no-repeat; /*これしないと横に同じ画像が出る*/
+}
+.img-profile-text {
+    position: absolute;
+    width: 30%;
+    top: 25%;
+    left: 15%;
+}
+.profile-scroll {
+    position: absolute;
+    top: 17%;
+    left: 15%;
+}
+.girlandpanda {
+    position: absolute;
+    height: 30%;
+    bottom: -150px;
+    right: 8%;
+}
+
+.name-en {
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.name-jp {
+    font-family: 'Zen Kaku Gothic New';
+    letter-spacing: 2px;
+}
+/*プロフィール本文*/
+.text-profile-page {
+    width: 100%;
+    overflow-x: clip;
+}
+.text-profile-wrapper {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 48px);
+    margin-top: 30px;
+    margin-bottom: 200px;
+    gap: 10px;
+    position: relative;
+    max-width: min(900px, 92vw);/*これしたら真ん中になったなんで？*/
+}
+.text-profile-wrapper p{
+    display: block;
+    position: relative;
+    max-width: 100%;
+    margin-inline: 0;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    word-break: keep-all;  /* 単語の途中で折らない */
+    overflow-wrap: break-word; /* 単語が長すぎた場合は仕方なく折る */    
+}
+/*文中の線　共通設定*/
+/*プロフィール文中の線*/
+.profiletext {
+    position: static;
+    margin-left: 0;
+}
+.profiletext::after {
+    content: "";
+    display: inline-block;
+    width: 4.5em;            /* 長さは好みで */
+    height: 0.06em;          /* 太さ */
+    background: #312d24;
+    margin-left: .4em;       /* 文字との間隔 */
+    vertical-align: .25em; 
+}
+
+.tree-4 {
+    bottom: -20%;
+    left: 5%;
+    transform: rotate(-5deg);
+} 
+.tree-5 {
+    top: 60%;
+    left: 75%;
+    transform: rotate(5deg);
+}
+.tree-6 {
+    height: 80px;
+    bottom: -70px;
+    left: 58%;
+    transform: rotate(-3deg);
+}
+/*大切にしていること*/
+.commitment {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.commitment-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(60px, 10vw, 100px);
+    max-width: min(900px, 92vw);
+}
+.text-commitment {
+    width: 30%;
+    padding-top: clamp(24px, 6vw, 120px);
+}
+/*コミュニケーションをしっかりとること。*/
+.communication-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    gap: 60px;
+}
+.communication {
+    width: 35%
+}
+.text-communication-container {
+    padding-top: 80px;
+}
+/*見出し*/
+.text-communication {
+    font-family: 'Zen Kaku Gothic New';
+    font-weight: 600;
+}
+.text-communication-p p{
+    line-height: 1.8;
+    overflow-wrap: break-word; /* 単語が長すぎた場合は仕方なく折る */
+}
+
+/*伝わるデザインを作ること。*/
+.buy-wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 30px;
+}
+.text-buy-container {
+    display: flex;
+    flex-direction: column;
+}
+.text-buy { /*見出し*/
+    font-family: 'Zen Kaku Gothic New';
+}
+.text-buy-p p{
+    line-height: 1.8;
+    margin-top: 0;  
+    overflow-wrap: break-word; /* 単語が長すぎた場合は仕方なく折る */
+}
+.buytext-line { /*文中のline*/
+    position: static;
+    margin-left: 0;
+}
+.buytext-line::after { /*テキストの末尾にくっつける*/
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 4.5em;            /* 長さは好みで */
+    height: 0.06em;          /* 太さ */
+    background: #312d24;
+    margin-left: .1em;       /* 文字との間隔 */
+    vertical-align: .25em; 
+}
+
+.buy {
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+
+.back{
+    display: inline-block;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: clamp(10px, 4vw ,50px);
+    gap: 2px;
+}
+.back-text {
+    position: relative;
+    color: #312d24;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+.back-text::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 1px;
+    left: 0;
+    bottom: -2px;
+    border-top:1px solid #312d24;
+    transition: width 0.5s ease;
+}
+.back-text:hover::after {
+    width: 100%;
+}
+/*
+.back-dot {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-color: #f8650a;
+    border-radius: 50%;
+}
+*/
+.back-line {
+    position: relative;
+    content: "";
+    width: 80px;
+    height: 1px;
+    border-top: 3px dotted #6b6969;
+}
+.back-line::after { /*球を線の擬似要素にすれば、線の上に合わせられる*/
+    content: "";
+    position: absolute;
+    width: 20px;
+    aspect-ratio: 1/1;
+    top: -11px; /*球の約半分くらいをマイナスすれば真ん中にくる*/
+    left: -8px;/*これは-8pxだとややずれていたので微調整した*/
+    background-color: #82b2c5;
+    border-radius: 50%;
+    will-change: transform;
+    animation: backscrollX 1.0s linear infinite;
+}
+@keyframes backscrollX {
+    from {transform: translateX(80px);}
+    to {transform: translateX(0px);}
+}
+/* =======================
+    レスポンシブ対応
+   ======================= */
+@media (max-width: 1300px) {
+    .text-profile-wrapper {
+        margin: 0;
+        margin-inline: auto;
+        padding-inline: clamp(16px, 4vw, 48px);
+        max-width: min(900px, 92vw);
+    }
+    .hero-profile {
+        position: relative;
+    }
+    .name {
+        left: 0;}
+    .profile-scroll {
+        position: absolute;
+        top: 16%;
+    }
+    .scroll-text {
+        font-size: 50%;
+    }
+    .text-buy-container {
+        padding: 0;
+    }
+    .tree {
+        display: none;
+    }
+    .text-commitment {
+        width: 50%;
+    }
+    .communication {
+        width: 35%;
+
+    }
+    .buy-wrapper{
+        gap: 0;
+        margin-bottom: 30px;
+    }
+    .buy {
+        width: 30%;
+    }
+}
+@media (max-width: 900px) {
+    .commitment {
+        padding-top: 10%;
+    }
+    .profile-scroll {
+        display: none;
+    }
+    .communication-wrapper {
+        padding-top: 10%;
+        flex-direction: column;
+        gap: 0;
+    }
+    .communication {
+        width: 50%;
+    }
+    .text-profile-wrapper {
+        margin: 0;
+        margin-inline: auto;
+        padding-inline: clamp(16px, 4vw, 48px);
+        max-width: min(550px, 92vw);
+    }
+    .text-communication-container {
+        padding-top: 0;
+    }
+    .buy-wrapper {
+        flex-direction: column-reverse;
+    }
+    .buy {
+        width: 40%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper{ 
+        overflow-x: clip; 
+    } 
+    .text-profile-wrapper {
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: clamp(12px, 4vw, 24px);
+    max-width: min(520px, 92vw);
+    }
+    .text-commitment {
+        margin: 100px 0 20px 0;
+    }
+    .text-communication-container {
+        padding-top: 0;
+    }
+    .commitment-wrapper {
+        gap: clamp;
+    }
+}
+
+/*制作物紹介ページ*/
+/*制作物1-心療内科- */
+.wrapper.work {
+    padding-inline: clamp(24px, 3vw, 32px);
+}
+.work { /*mainページのフォント指定*/
+    font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.work img {
+    max-width: 100%;
+}
+.work__top {
+    position: relative;
+    padding-block-start: 150px;
+}
+.work__top::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #6b6969;
+}
+/*h1指定*/
+.work__title {
+    font-weight: 500;
+    margin: 0;
+    margin-block-end: 10px;
+}
+.work__subtitle {
+    color: #82b2c5;
+    margin: 0;
+}
+
+.work__mockup--clinic {
+    filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.2));
+}
+.work__summary.text {
+    margin-block-end: 2rem;
+}
+.work__img--skew {
+    margin-block-end: 2rem;
+}
+.brief__row {
+    position: relative;
+    margin-block-end: 4rem;
+}
+.brief__row::after {
+    content: "";
+    position: absolute;
+    top: 115%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #dcd9d9;
+}
+
+/*文頭ドットの指定*/
+.brief__dot{
+    display: inline-block;
+    width: 18px;
+    margin-right: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.brief__dot.target {
+    background-color: #82b2c5;
+}
+.brief__dot.issue {
+    background-color: #82b2c5;
+}
+.brief__dot.purpose {
+    background-color: #82b2c5;
+}
+.brief__dot.IA {
+    background-color: #82b2c5;
+}
+.brief__dot.tool {
+    background-color: #82b2c5;
+}
+
+.work1__img {
+    background-color: #f2f7f9;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 4vw, 60px);
+}
+/* a,b を横並び（2カラム）、c はその下 */
+.work1__img--row {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;   /* ← a,b を等分 */
+    gap: clamp(12px, 2vw, 24px);
+    padding-top: clamp(0rem, 4vw, 30rem);
+    align-items: start;
+}
+
+.work1__img--sp {
+    padding-top: clamp(0rem, 12vw, 30rem);
+}
+
+/* c は全幅のままでOK（既存のクラスをそのまま使う） */
+.work1__img--about {
+    display: flex;
+    width: 49%;
+    margin: auto;
+    height: auto;
+}
+
+/* スマホで a,b も縦積み */
+@media (max-width: 768px) {
+.work1__img--row { grid-template-columns: 1fr; }
+
+.work1__img--about {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+}
+
+/*制作物2-カフェバナー-*/
+.work__mockup--cafe {
+    display: block;
+    max-width: 100%;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    padding-block: clamp(16px, 6vw, 64px);
+}
+.work__summary {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+.brief__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 3vw, 8px);
+}
+.brief__content p {
+    margin: 0;
+}
+.brief__content--plan, .brief__content--design {
+    display: flex;
+    gap: clamp(4px, 3vw, 2rem);
+}
+.content__heading {
+    padding-inline-end: 32px; /*制作日数の行頭を揃えるため*/
+}
+.work__img--banner {
+    display: block;
+    max-width: 100%;
+    width: 70%;
+    margin: auto;
+    padding-block: clamp(24px, 12vw, 200px); /*画像の上下に余白が欲しい→→マージンは大きいほう１辺のみしか採用されない。セクション同士の境界でマージン相殺が起きがち。セクションに padding-block を使うと相殺されず安定。*/
+    filter: drop-shadow(1px 7px 15px rgba(0, 0, 0, 0.2)); /*透過部分があるときのシャドウはこれ。
+    構文: drop-shadow: x-offset y-offset blur spread color;*/
+}
+@media (max-width: 768px) {
+.work__img--banner {
+    width: 100%;
+}
+}
