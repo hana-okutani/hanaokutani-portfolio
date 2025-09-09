@@ -607,6 +607,7 @@ main h1 {
 /*WORKS*/
 .works {
     position: relative;
+    isolation: isolate;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -622,12 +623,12 @@ main h1 {
     justify-content: center;
     width: 30%;
     min-height: 700px;
-    z-index: -1;
+    z-index: 0;
 }
 
 .bg-works {
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     top: 0px;
     height: auto;
     aspect-ratio: 3/4;
@@ -656,7 +657,7 @@ main h1 {
 .text-works {
     position: absolute;
     z-index: 2;
-    width: clamp(250px, 16vw, 300px);
+    width: clamp(200px, 20vw, 300px);
     top: 40%;
     left: 10%;
 }
@@ -664,7 +665,7 @@ main h1 {
     color: #43BB91;
     font-family: jost;
     font-weight: 600;
-    font-size: 38px;
+    font-size: clamp(24px, 10vw, 48px);
     letter-spacing: 4px;
     position: absolute;
     z-index: 2;
@@ -759,6 +760,9 @@ main h1 {
     }
     .works-left, .works-right {
         width: 100%;
+    }
+    .works-right {
+        margin-block-start: -200px;
     }
     .works-left {
         margin-bottom: -300px;
@@ -867,14 +871,14 @@ main h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 700px;
+    min-height: 700px; 
     width: 40%;
 }
 
 .bg-profile {
     position: absolute;
     z-index: -1;
-    width: 160%;
+    width: 130%;
     top: -100px;
     left: 0;
     transform: rotate(10deg);
@@ -902,18 +906,18 @@ main h1 {
 .label-profile {
     color: #EbEEDA;
     font-weight: 600;
-    font-size: 38px;
+    font-size: clamp(24px, 10vw, 48px);
     letter-spacing: 4px;
     position: absolute;
     z-index: 1;
-    top: 160px;
+    top: 15%;
     left: 30%;
 }
 .text-profile {
     position: absolute;
-    z-index: 1;
-    width: 250px;
-    top: 230px;
+    z-index: 2;
+    width: clamp(150px, 30vw, 300px);
+    top: 30%;
     left: 25%;
 }
 .img-profile {
@@ -1050,28 +1054,32 @@ main h1 {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        padding-inline: 0;
     }
     .profile-left {
         margin-bottom: 0px;
+        padding-inline: 0;
     }
     .profile-right {
         padding-top: 0;
         width: 80%;
-    }
+        padding-inline: 8px; margin-block-start: -250px;}
+    
     .label-profile {
-        transform: translate(-40%, -90%);
+        top: 15%; left: -50%;
     }
     .text-profile {
-        transform: translate(-40%, -10%);
+        top: 25%; left: -50%;
     }
     .bg-profile {
-        width: 200%;
-        transform: translate(-25%,-20%)
+        width: 300%;
+        max-width: 300%;
+        left: -80%;
+        top: 0;
     }
     .img-profile {
-        min-height: 300px;
         top: 50%;
-        transform: translateX(-41%);    
+        transform: translateX(-150px);    
     }
     .profile-wrapper h2{
         display: flex;
@@ -1183,14 +1191,14 @@ main h1 {
     position: absolute;
     color: #1E9756;
     font-weight: 600;
-    font-size: 38px;
+    font-size: clamp(24px, 10vw, 48px);
     letter-spacing: 4px;
     top: 35%;
     left: 65%;
 }
 .text-skills {
     position: absolute;
-    width: clamp(150px, 3vw, 600px);
+    width: clamp(130px, 10vw, 600px);
     left: 65%;
     top: 55%;
 }
@@ -1315,7 +1323,6 @@ main h1 {
     }
     .bg-skills {
         left: 30%;
-        border: 1px solid blue;
     }
     .skills-right {
         margin-block-start: 50px;
@@ -1431,7 +1438,7 @@ main h1 {
 .label-strength {
     color: #f8650a;
     font-weight: 600;
-    font-size: 38px;
+    font-size: clamp(28px, 10vw, 48px); /* ★PCではしっかり大きい／スマホでは縮むベース */
     letter-spacing: 4px;
     margin: 0;
     position: absolute;  
@@ -1441,7 +1448,7 @@ main h1 {
 /* サブ画像を常に同じ位置に絶対配置・内容下と重ならない */
 .text-strength {
     position: absolute;                 /* ★ 固定配置（親基準） */
-    width: clamp(220px, 40%, 300px);
+    width: clamp(130px, 13vw, 600px);
     top: clamp(60px, 9vw, 300px);       /* ★ 縦位置：画面幅が変わっても上下しにくい */
     left: clamp(22%, 24vw, 34%);        /* ★ 横位置 */
 }
@@ -1480,7 +1487,7 @@ main h1 {
 }
 .strength-left span{
     display: inline-block;
-    width: 20px;
+    width: clamp(12px, 4vw, 20px);
     aspect-ratio: 1/1;
     background-color: #55B58B;
     border-radius: 50%;
@@ -1500,8 +1507,8 @@ main h1 {
 }
 .strength-right span{
     display: inline-block;
-    width: 20px;
-    height: 20px;    
+    width: clamp(12px, 4vw, 20px);
+    aspect-ratio: 1/1;
     background-color: #EDC09D;
     border-radius: 50%;
 }
@@ -1571,7 +1578,7 @@ main h1 {
         row-gap: clamp(10px, 3vw, 18px);
         margin-top: clamp(8px, 4vw, 24px);
     }
-    .label-strength { font-size: clamp(26px, 5vw, 34px); }
+    .label-strength { font-size: clamp(22px, 6vw, 34px);; }
     .text-strength  { 
         width: clamp(180px, 60%, 300px); 
         top: 70%;
@@ -1587,17 +1594,20 @@ main h1 {
 .contact-wrapper{
     position: relative;
     padding-top: 100px;
-    overflow: clip;
+    overflow: visible;
     display: flex;
+    z-index: 0;
+    isolation: isolate;
     flex-direction: column;
     gap: clamp(16px, 4vw, 32px);
+    overflow-y: clip;
 }
 .contact-wrapper::before{ 
     /*絶対配置の <img> をやめ、擬似要素で背景扱いにするとスクロールや重なりに強い*/
     content:"";
     position: absolute;
     inset: -5% 0;                      /* 大きめに敷く */
-    background: url(images/blob-hero.png) no-repeat center / contain;
+    background: url(../images/blob-hero.png) no-repeat center / contain;
     z-index:-1;
     pointer-events:none;
 }
@@ -1619,15 +1629,8 @@ main h1 {
     margin-bottom: 10px;
 }
 
-.label-contact {
-    font-size: 58px;
-    color: transparent;              /* 塗りつぶしを透明にする */
-    -webkit-text-stroke: 2px #FBFFE9;
-    text-shadow:  8px 6px rgba(0,0,0,0.05);  /* ふわっとした影 */
-    margin: 0;
-}
 .text-contact {
-    width: clamp(200px, 3vw, 500px);
+    width: clamp(200px, 60vw, 400px);
 }
 .email {
     text-decoration: none;
@@ -1720,7 +1723,7 @@ footer p{
     justify-content: center;
     margin: 0 auto;
     width: 90%;
-    mask-image: url(images/mask.svg); /*マスク画像*/
+    mask-image: url(../images/mask.svg); /*マスク画像*/
     mask-size: contain; /*マスクと画像のずれやはみだしを無くす*/
     mask-repeat: no-repeat; /*これしないと横に同じ画像が出る*/
 }
@@ -2213,4 +2216,150 @@ footer p{
 .work__img--banner {
     width: 100%;
 }
+}
+
+/* ====== 200〜300px 幅向けの安全ネット ====== */
+@media (max-width: 390px) {
+  /* 文字がはみ出さない・見やすい */
+  html { font-size: clamp(12px, 4.5vw, 14px); }
+  body { word-break: break-word; overflow-wrap: anywhere; hyphens: auto; }
+
+  /* 横はみ出しの元を抑える & 余白を小さく */
+  .wrapper { padding-inline: clamp(4px, 2vw, 12px); }
+  * { min-width: 0; }               /* flex/grid子要素のはみ出し防止 */
+  img, video, svg { max-width: 100%; height: auto; }
+
+  /* ヒーロー周りをシンプル化 */
+  header { height: 64px; }
+  .hamburger { top: 10px; left: 10px; inline-size: 40px; block-size: 40px; }
+  header nav { top: 64px; }
+
+  .hero { padding-block-start: 7rem; }
+  .logo { width: clamp(180px, 78vw, 240px); top: auto; left: 50%; transform: translateX(-50%); position: relative; margin-block: 8px; }
+  .label-hero { position: relative; top: 0; left: 0; margin: 8px auto 16px; text-align: center; }
+  .text-webdesign { font-size: clamp(14px, 4.6vw, 16px); letter-spacing: 1px; }
+  .highlight { font-size: clamp(26px, 10vw, 34px); letter-spacing: 1px; }
+  .bg-circle.yellow {
+    top: 30%;
+    left: -50%;
+  }
+  .text p{
+    padding-inline: 0;
+  }
+
+  /* スライダーは演出カットで安定表示 */
+  .slider-top, .slider-bottom { display: none !important; }
+
+  /* WORKS：1カラム＆余白ぎゅっと */
+  .works { margin: 32px 0; gap: 16px; padding: 0; }
+  .works-left { min-height: auto; width: 100%; }
+  .works-right { grid-template-columns: 1fr; gap: 12px; padding: 0; justify-items: center; margin-block-start: 200px;}
+  .work-item { width: 100%; aspect-ratio: auto; }
+  .work-thumb { width: 100%; max-width: 100%; display: block; margin: 0 auto; }
+  .text-works { top: 90px; left: 0;}
+  .label-works { top: 30px; }
+
+  /* PROFILE：縦積み＋内側余白縮小 */
+  .profile { flex-direction: column; align-items: center; overflow-x: clip; }
+  .profile-left, .profile-right { width: 100%; }
+  .profile-left { min-height: 600px;}
+  .profile-right { padding-inline: clamp(6px, 4vw, 12px); margin-block-start: -250px;}
+  .profile-right h2 { font-size: clamp(18px, 5.5vw, 20px); gap: 8px; }
+  .profile-right .bio { max-width: 100%; font-size: 13px; }
+  .location { font-size: 13px;}
+  .img-profile { 
+    position: relative; 
+    top: -20px; left: 20px; 
+    transform: none; 
+    min-height: 0; 
+    height: clamp(140px, 42vw, 200px);}
+    
+    .text-profile {
+        left: 40%;
+        top: 20%;
+    }
+    .bg-profile {
+        top: 0;
+        left: -20px;
+        max-width: 150%;
+    }
+    .profile-more {
+        margin-block: 0;
+    }
+
+  /* SKILLS：縦積み＋カード間隔を詰める */
+  .skills { flex-direction: column-reverse; align-items: stretch;}
+  .skills-left, .skills-right { width: 100%; margin: 0; gap: 16px; }
+  .skills-left { margin-block-start: -200px; gap: 30px;}
+  .text-skills { left: 10%; top: 45%;}
+  .bg-skills {top: 75px;}
+  .label-skills { left: 15%;}
+  .skill-design, .skill-htmlcss, .skill-illustration { min-height: auto; row-gap: 8px; padding-block: 8px; }
+  .skill-htmlcss {margin-block-start: 0;}
+  .icon-design, .icon-htmlcss, .icon-illustration { max-width: clamp(80px, 36vw, 120px); }
+  .text-illustration {font-size: 16px}
+  .text-htmlcss { font-size: 16px;}
+  .tool-container {
+    flex-direction: column;
+  }
+
+  /* STRENGTH：テキスト主体に */
+  .strength { margin-block: 40px; margin-block-start: 150px; }
+  .strength-heading { max-width: 100%; min-height: auto; margin-bottom: 16px; }
+  .strength-label-wrapper { padding: 0; margin: 0; }
+  .strength-left, .strength-right { padding-inline: 5px;}
+  .label-strength { position: static; font-size: clamp(24px, 10vw, 48px); }
+  .text-strength { position: static; width: 70%; }
+  .container-strength {
+        margin-block-start: 30px;
+        gap: 40px;
+    }
+    .bg-strength { top: -60px; left: -30px; max-width: 150%;}
+
+  /* CTAボタン：詰める＆折返し許可 */
+  .email {
+    white-space: normal;             /* ← これが超重要（折り返し許可） */
+    padding: 10px 14px;
+    font-size: clamp(12px, 5vw, 16px);
+    letter-spacing: 1px;
+  }
+
+  /* フッター文字：小さく＆折返し */
+  footer p { font-size: clamp(10px, 3.4vw, 12px); white-space: normal; letter-spacing: 0.5px; }
+}
+
+/* さらに極小（Apple Watch並み）保険：280px以下 */
+@media (max-width: 280px) {
+  html { font-size: clamp(12px, 4.8vw, 14px); }
+  .email { font-size: clamp(14px, 5.2vw, 14px); padding: 8px 12px; }
+}
+/* ===== 修正パッチ：極小〜スマホ幅の重なり＆文字サイズ＆画像つぶれ対策 ===== */
+
+/* 1) WORKS が上に食い込む件：負のマージン＆z-indexを無効化 */
+@media (max-width: 768px) {
+  .works-left {
+    margin-bottom: 0 !important;  /* ← ここが -300px になっていたのが重なりの主因 */
+    z-index: auto !important;     /* ← -1 だと下層に潜って見た目が崩れることがある */
+  }
+}
+
+/* 2) 見出しが小さくならない件：h1/h2 の最小値をちゃんと落とす */
+@media (max-width: 390px) {
+  h1 { font-size: clamp(1.4rem, 8vw, 1.9rem) !important; }
+    .strength h2 {
+        font-size: clamp(18px, 1vw, 48px);
+        margin-bottom: 30px;
+    }
+}
+/* 3) profile の画像が縮まずにつぶれる件：
+      小さい幅では絶対配置＆min-heightを解除して、自然な高さに */
+@media (max-width: 768px) {
+  .img-profile {
+    position: relative;
+    top: auto;
+    left: 50%; /*absoluteの時の中央配置*/
+    transform: translateX(-50%); /*absoluteの時の中央配置*/
+    min-height: 0;           
+    height: clamp(140px, 60vw, 220px);
+  }     
 }
